@@ -6,7 +6,12 @@ import {
   GraphQLInt,
   GraphQLList
 } from "graphql";
-import { getSaleCards, getSaleLabels, getPromotion } from "./resolvers";
+import {
+  getSaleCards,
+  getSaleLabels,
+  getPromotion,
+  hackdaySearch
+} from "./resolvers";
 
 const SaleCard = new GraphQLObjectType({
   name: "SaleCard",
@@ -40,6 +45,14 @@ const SaleLabels = new GraphQLObjectType({
   })
 });
 
+const HackdaySearch = new GraphQLObjectType({
+  name: "HackDaySearch",
+  fields: () => ({
+    imageUrl: { type: GraphQLString },
+    saleUrl: { type: GraphQLString }
+  })
+});
+
 const SecretEscapesQuery = new GraphQLObjectType({
   name: "SecretEscapes",
   fields: {
@@ -51,6 +64,21 @@ const SecretEscapesQuery = new GraphQLObjectType({
       },
       type: new GraphQLList(SaleCard),
       resolve: getSaleCards
+    },
+    hackdaySearch: {
+      args: {
+        what: {
+          type: GraphQLString
+        },
+        where: {
+          type: GraphQLString
+        },
+        when: {
+          type: GraphQLString
+        }
+      },
+      type: HackdaySearch,
+      resolve: hackdaySearch
     }
   }
 });

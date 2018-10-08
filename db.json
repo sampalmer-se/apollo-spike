@@ -1,0 +1,22 @@
+{
+  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 },
+    { "id": 2, "body": "different comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" },
+
+  "salecards": [{ "id": 1, "saleLabelId": 1 }, { "id": 2, "saleLabelId": 1 }],
+
+  "salelabel": [
+    { "id": 1, "saleLabels": { "deposit": false, "promotionId": 1 } },
+    { "id": 2, "saleLabels": { "deposit": true, "promotionId": 1 } }
+  ],
+
+  "promotion": [
+    {
+      "id": 1,
+      "type": "bob"
+    }
+  ]
+}
